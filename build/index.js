@@ -1,18 +1,18 @@
-'use strict';
-const __importDefault = (this && this.__importDefault) || function (mod) {
-  return mod && mod.__esModule ? mod : {default: mod};
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
-Object.defineProperty(exports, '__esModule', {value: true});
-const express_1 = __importDefault(require('express'));
-const images_1 = __importDefault(require('./routes/api/images'));
-const app = (0, express_1.default)();
-const port = 3000;
-app.use('/api', images_1.default);
-app.get('/api', (req, res) => {
-  res.send('Hi in the API page');
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
+var images_1 = __importDefault(require("./routes/api/images"));
+var app = (0, express_1.default)();
+var port = 3000;
+app.use("/api", images_1.default);
+app.get("/api", function (req, res) {
+    res.send("Hi in the API page");
+    // res.sendFile(__dirname +   "/test.jpg")
 });
-app.listen(port, () => {
-  console.log('server started at http://localhost:'.concat(port));
+app.listen(port, function () {
+    console.log("server started at http://localhost:".concat(port));
 });
 exports.default = app;
