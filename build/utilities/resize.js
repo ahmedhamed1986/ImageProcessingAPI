@@ -39,6 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.testJasmine = exports.resize = void 0;
 var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var sharp_1 = __importDefault(require("sharp"));
@@ -86,6 +87,7 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
+exports.resize = resize;
 //   if (fs.existsSync(imagePath)){
 //       console.log('TEST2: ' + imagePath);
 //       return res.sendFile(imagePath);
@@ -125,4 +127,9 @@ function resizeImage(name, width, height) {
         });
     });
 }
+var testJasmine = function (number1, number2) {
+    var total = number1 + number2;
+    return total;
+};
+exports.testJasmine = testJasmine;
 exports.default = resize;
