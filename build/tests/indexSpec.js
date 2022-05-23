@@ -42,9 +42,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = __importDefault(require("../index"));
 var supertest_1 = __importDefault(require("supertest"));
 var resize_1 = require("../utilities/resize");
-<<<<<<< HEAD
-var request1 = (0, supertest_1.default)(index_1.default);
-=======
 var images_1 = __importDefault(require("../routes/api/images"));
 var images_2 = __importDefault(require("../routes/api/images"));
 var request = (0, supertest_1.default)(index_1.default);
@@ -53,9 +50,8 @@ beforeAll(function () {
     var request = (0, supertest_1.default)(index_1.default);
     index_1.default.use("/api", images_1.default);
 });
->>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
 it('total', function () {
-    expect((0, resize_1.testJasmine)(1, 2)).toBeLessThan(1);
+    expect((0, resize_1.testJasmine)(1, 2)).toBeLessThan(10);
 });
 it("test the empty image page", function () { return __awaiter(void 0, void 0, void 0, function () {
     var aa1, aa2, aa3, resposnse;

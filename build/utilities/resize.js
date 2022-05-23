@@ -44,23 +44,13 @@ var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var sharp_1 = __importDefault(require("sharp"));
 var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var imgName, imgWidth, imgHeight, imagePath;
+    var imgName, imgWidth, imgHeight, imagePath, originaImage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 imgName = req.query.name;
                 imgWidth = Number(req.query.width);
                 imgHeight = Number(req.query.height);
-<<<<<<< HEAD
-                imagePath = path_1.default.normalize(__dirname +
-                    '../../../thumbnail/' +
-                    imgName +
-                    '-' +
-                    imgWidth +
-                    '-' +
-                    imgHeight +
-                    '.jpg');
-=======
                 imagePath = path_1.default.normalize(__dirname + '../../../thumbnail/' + imgName + '-' + imgWidth + '-' + imgHeight + '.jpg');
                 originaImage = path_1.default.normalize(__dirname + '../../../original-pic/' + imgName);
                 // Error handling
@@ -80,7 +70,6 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                     res.status(400).send("width and height must be integer positive numbers");
                     return [2 /*return*/];
                 }
->>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
                 if (!fs_1.default.existsSync(imagePath)) return [3 /*break*/, 1];
                 console.log('TEST2: ' + imagePath);
                 return [2 /*return*/, res.sendFile(imagePath)];
@@ -98,26 +87,6 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-<<<<<<< HEAD
-=======
-//   if (fs.existsSync(imagePath)){
-//       console.log('TEST2: ' + imagePath);
-//       return res.sendFile(imagePath);
-//   }else {
-//     if (req.query.name != null){
-//       resizeImage(
-//                 imgName as string,
-//                 imgWidth as unknown as number,
-//                 imgHeight as unknown as number
-//               );
-//       await setTimeout(() => {
-//         console.log('TEST1: ' + imagePath);
-//         return res.sendFile(imagePath);
-//       }, 500);
-//     }
-//   }
-// };
->>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
 function resizeImage(name, width, height) {
     return __awaiter(this, void 0, void 0, function () {
         var error_1;

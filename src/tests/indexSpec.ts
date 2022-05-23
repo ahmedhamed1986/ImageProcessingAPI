@@ -1,4 +1,3 @@
-
 import app from "../index";
 import supertest from "supertest";
 import {testJasmine} from "../utilities/resize";
@@ -8,11 +7,7 @@ import images from "../routes/api/images";
 import server1 from "../routes/api/images";
 
 
-
-
-
-
-const request1 = supertest(app)
+const request = supertest(app)
 
 
 app.use("/api" , images);
@@ -27,9 +22,6 @@ it('total', () =>{
     expect(testJasmine(1,2)).toBeLessThan(10)
 })
 
-<<<<<<< HEAD
-
-=======
 it("test the empty image page", async()=>{
 
     const aa1 = "hi"
@@ -41,7 +33,6 @@ it("test the empty image page", async()=>{
     
     // expect(request.get('/api/image').responseType).toBe(response.status(200))
 })
->>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
 
 it("test the empty image page", async()=>{
 
@@ -77,5 +68,3 @@ it("test the empty image page", async()=>{
     
 //             })
 //     })
-
-
