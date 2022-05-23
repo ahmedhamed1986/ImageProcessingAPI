@@ -17,7 +17,7 @@ const resize  =  async (req: express.Request, res: express.Response, next: Funct
 
   // Error handling
   if(!fs.existsSync(originaImage)){
-    res.status(400).send("no image with that name")
+    res.status(400).json({message: "no image with that name"})
     return
   }
   if(imgWidth < 0 || imgHeight < 0 ) {
