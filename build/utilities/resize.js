@@ -51,6 +51,7 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                 imgName = req.query.name;
                 imgWidth = Number(req.query.width);
                 imgHeight = Number(req.query.height);
+<<<<<<< HEAD
                 imagePath = path_1.default.normalize(__dirname +
                     '../../../thumbnail/' +
                     imgName +
@@ -59,6 +60,27 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                     '-' +
                     imgHeight +
                     '.jpg');
+=======
+                imagePath = path_1.default.normalize(__dirname + '../../../thumbnail/' + imgName + '-' + imgWidth + '-' + imgHeight + '.jpg');
+                originaImage = path_1.default.normalize(__dirname + '../../../original-pic/' + imgName);
+                // Error handling
+                if (!fs_1.default.existsSync(originaImage)) {
+                    res.status(400).json({ message: "no image with that name" });
+                    return [2 /*return*/];
+                }
+                if (imgWidth < 0 || imgHeight < 0) {
+                    res.status(400).send("bad value for width or height, must be positive integer");
+                    return [2 /*return*/];
+                }
+                if (!imgWidth || !imgHeight) {
+                    res.status(400).send("no value for width or height");
+                    return [2 /*return*/];
+                }
+                if (!isNaN(imgWidth) || !isNaN(imgHeight)) {
+                    res.status(400).send("width and height must be integer positive numbers");
+                    return [2 /*return*/];
+                }
+>>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
                 if (!fs_1.default.existsSync(imagePath)) return [3 /*break*/, 1];
                 console.log('TEST2: ' + imagePath);
                 return [2 /*return*/, res.sendFile(imagePath)];
@@ -76,6 +98,26 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
+<<<<<<< HEAD
+=======
+//   if (fs.existsSync(imagePath)){
+//       console.log('TEST2: ' + imagePath);
+//       return res.sendFile(imagePath);
+//   }else {
+//     if (req.query.name != null){
+//       resizeImage(
+//                 imgName as string,
+//                 imgWidth as unknown as number,
+//                 imgHeight as unknown as number
+//               );
+//       await setTimeout(() => {
+//         console.log('TEST1: ' + imagePath);
+//         return res.sendFile(imagePath);
+//       }, 500);
+//     }
+//   }
+// };
+>>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
 function resizeImage(name, width, height) {
     return __awaiter(this, void 0, void 0, function () {
         var error_1;

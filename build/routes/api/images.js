@@ -6,7 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var resize_1 = __importDefault(require("../../utilities/resize"));
 var images = express_1.default.Router();
+<<<<<<< HEAD
 images.get('/images', resize_1.default, function (req, res) {
+=======
+var server1 = images.get("/images", resize_1.default, function (req, res) {
+>>>>>>> 5f559dec62c9b30110d8c6c3ea090b342c49efd0
     res.send("Here you can resize you image. Just put your queries in the address bar");
     // res.sendFile(path.normalize('C:/Users/ahmed/Desktop/ImageProcessingAP/thumbnail/fjord.jpg-400-602.jpg'))
 });
