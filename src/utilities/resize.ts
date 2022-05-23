@@ -1,5 +1,6 @@
 import express from 'express';
 import fs from 'fs';
+import { builtinModules } from 'module';
 import path, { dirname } from 'path';
 import sharp from 'sharp';
 
@@ -50,5 +51,15 @@ async function resizeImage(name: string, width: number, height: number) {
       console.log(error);
    }
 }
+
+
+const testJasmine = (number1: number, number2: number) =>{
+  const total = number1+ number2
+
+  return total
+}
+
+
+export { testJasmine}
 
 export default resize;
