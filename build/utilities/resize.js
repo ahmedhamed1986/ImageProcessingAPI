@@ -39,11 +39,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.testJasmine = void 0;
+exports.resizeImage = void 0;
 var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var sharp_1 = __importDefault(require("sharp"));
-var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+var resize = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var imgName, imgWidth, imgHeight, imagePath, originaImage;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -51,23 +51,26 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                 imgName = req.query.name;
                 imgWidth = Number(req.query.width);
                 imgHeight = Number(req.query.height);
-                imagePath = path_1.default.normalize(__dirname + '../../../thumbnail/' + imgName + '-' + imgWidth + '-' + imgHeight + '.jpg');
+                imagePath = path_1.default.normalize(__dirname +
+                    '../../../thumbnail/' +
+                    imgName +
+                    '-' +
+                    imgWidth +
+                    '-' +
+                    imgHeight +
+                    '.jpg');
                 originaImage = path_1.default.normalize(__dirname + '../../../original-pic/' + imgName);
                 // Error handling
                 if (!fs_1.default.existsSync(originaImage)) {
-                    res.status(400).send("no image with that name");
+                    res.status(400).send('no image with that name');
                     return [2 /*return*/];
                 }
                 if (imgWidth < 0 || imgHeight < 0) {
-                    res.status(400).send("bad value for width or height, must be positive integer");
+                    res.status(400).send('bad value for width or height, must be positive integer');
                     return [2 /*return*/];
                 }
                 if (!imgWidth || !imgHeight) {
-                    res.status(400).send("no value for width or height");
-                    return [2 /*return*/];
-                }
-                if (isNaN(imgWidth) || isNaN(imgHeight)) {
-                    res.status(400).send("width and height must be integer positive numbers");
+                    res.status(400).send('no value for width or height');
                     return [2 /*return*/];
                 }
                 if (!fs_1.default.existsSync(imagePath)) return [3 /*break*/, 1];
@@ -107,9 +110,6 @@ function resizeImage(name, width, height) {
         });
     });
 }
-var testJasmine = function (number1, number2) {
-    var total = number1 + number2;
-    return total;
-};
-exports.testJasmine = testJasmine;
+exports.resizeImage = resizeImage;
 exports.default = resize;
+//# sourceMappingURL=resize.js.map

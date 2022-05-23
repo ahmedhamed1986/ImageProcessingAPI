@@ -3,10 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const resize = async (
-   req: express.Request,
-   res: express.Response
-) => {
+const resize = async (req: express.Request, res: express.Response) => {
    const imgName = req.query.name;
    const imgWidth = Number(req.query.width);
    const imgHeight = Number(req.query.height);
@@ -69,12 +66,6 @@ async function resizeImage(name: string, width: number, height: number) {
    }
 }
 
-const testJasmine = (number1: number, number2: number) => {
-   const total = number1 + number2;
-
-   return total;
-};
-
-export { testJasmine };
+export { resizeImage };
 
 export default resize;

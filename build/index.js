@@ -15,3 +15,4 @@ app.listen(port, function () {
     console.log("server started at http://localhost:".concat(port));
 });
 exports.default = app;
+//# sourceMappingURL=index.js.map

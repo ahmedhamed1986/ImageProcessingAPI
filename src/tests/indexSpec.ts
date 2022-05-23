@@ -1,5 +1,8 @@
 import app from '../index';
 import supertest from 'supertest';
+import { resizeImage } from '../utilities/resize';
+import path from 'path';
+import fs from 'fs';
 
 const request = supertest(app);
 
@@ -38,3 +41,23 @@ describe('Test Image endpoint response', () => {
       expect(response.text).toBe('no value for width or height');
    });
 });
+
+
+describe("test resize function", () => {
+   it("test the output of the resize function" , async() => {
+      const testImageName = "palmtunnel.jpg"
+      const testImagePath = path.normalize(
+         __dirname +
+            '../../../thumbnail/' +
+            testImageName +
+            '-' +
+            "500" +
+            '-' +
+            "500" +
+            '.jpg'
+      );
+       await resizeImage(testImageName,500,500)
+      expect(fs.existsSync(testImagePath)).toBeTrue
+
+   })
+})
