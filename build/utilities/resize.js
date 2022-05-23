@@ -55,7 +55,7 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                 originaImage = path_1.default.normalize(__dirname + '../../../original-pic/' + imgName);
                 // Error handling
                 if (!fs_1.default.existsSync(originaImage)) {
-                    res.status(400).json({ message: "no image with that name" });
+                    res.status(400).send("no image with that name");
                     return [2 /*return*/];
                 }
                 if (imgWidth < 0 || imgHeight < 0) {
@@ -66,19 +66,17 @@ var resize = function (req, res, next) { return __awaiter(void 0, void 0, void 0
                     res.status(400).send("no value for width or height");
                     return [2 /*return*/];
                 }
-                if (!isNaN(imgWidth) || !isNaN(imgHeight)) {
+                if (isNaN(imgWidth) || isNaN(imgHeight)) {
                     res.status(400).send("width and height must be integer positive numbers");
                     return [2 /*return*/];
                 }
                 if (!fs_1.default.existsSync(imagePath)) return [3 /*break*/, 1];
-                console.log('TEST2: ' + imagePath);
-                return [2 /*return*/, res.sendFile(imagePath)];
+                return [2 /*return*/, res.status(200).sendFile(imagePath)];
             case 1:
                 if (!(req.query.name != null)) return [3 /*break*/, 3];
                 resizeImage(imgName, imgWidth, imgHeight);
                 return [4 /*yield*/, setTimeout(function () {
-                        console.log('TEST1: ' + imagePath);
-                        return res.sendFile(imagePath);
+                        return res.status(200).sendFile(imagePath);
                     }, 500)];
             case 2:
                 _a.sent();

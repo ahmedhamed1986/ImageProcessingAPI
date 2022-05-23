@@ -17,7 +17,7 @@ const resize  =  async (req: express.Request, res: express.Response, next: Funct
 
   // Error handling
   if(!fs.existsSync(originaImage)){
-    res.status(400).json({message: "no image with that name"})
+    res.status(400).send("no image with that name")
     return
   }
   if(imgWidth < 0 || imgHeight < 0 ) {
@@ -28,15 +28,10 @@ const resize  =  async (req: express.Request, res: express.Response, next: Funct
     res.status(400).send("no value for width or height")
     return
   }
-  if(!isNaN(imgWidth) || !isNaN(imgHeight)) {
-    res.status(400).send("width and height must be integer positive numbers")
-    return
-  }
   
   // processing
   if (fs.existsSync(imagePath)){
-      console.log('TEST2: ' + imagePath);
-      return res.sendFile(imagePath);
+      return res.status(200).sendFile(imagePath)
    } else {
       if (req.query.name != null) {
          resizeImage(
@@ -46,8 +41,7 @@ const resize  =  async (req: express.Request, res: express.Response, next: Funct
          );
 
          await setTimeout(() => {
-            console.log('TEST1: ' + imagePath);
-            return res.sendFile(imagePath);
+             return res.status(200).sendFile(imagePath);
          }, 500);
       }
    }
